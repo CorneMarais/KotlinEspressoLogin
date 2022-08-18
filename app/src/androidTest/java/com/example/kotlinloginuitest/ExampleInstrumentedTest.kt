@@ -1,9 +1,10 @@
 package com.example.kotlinloginuitest
 
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
@@ -31,9 +32,19 @@ class ExampleInstrumentedTest {
     fun  Login(){
         onView(withId(R.id.username))
             .perform(typeText("Hallo"))
+            .check(matches(withId(R.id.username)))
 
+        onView(withId(R.id.password))
+            .check(matches(withId(R.id.password)))
+            .perform(typeText("1234567"))
+            .check(matches(withText("1234567")))
+    }
 
-
+    @Test
+    fun loginbutton(){
+        onView(withId(R.id.login))
+            .check(matches(isClickable()))
+            .perform(click())
 
 
 
