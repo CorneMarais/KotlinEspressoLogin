@@ -38,16 +38,10 @@ class ExampleInstrumentedTest {
             .check(matches(withId(R.id.password)))
             .perform(typeText("1234567"))
             .check(matches(withText("1234567")))
-    }
 
-    @Test
-    fun loginbutton(){
         onView(withId(R.id.login))
             .check(matches(isClickable()))
             .perform(click())
-
-
-
     }
 
 }
